@@ -93,8 +93,8 @@ function closeBasket() {
     document.getElementById("sidebar").style.display = "none"; 
 }
 
-let bbasket = [];
-
+//const bbasket = JSON.parse(localStorage.getItem("meshullarelavesi")) || []
+const bbasket =JSON.parse(localStorage.getItem("basket")) || []
 
 function addbbasket(img, title, price, id) {
     const countDiv = document.querySelector("#countDiv");
@@ -124,11 +124,18 @@ function addbbasket(img, title, price, id) {
     umummebcem.innerHTML = "Ümumi məbləğ: " + tamcem.toFixed(2) + '₼';
 
     sebeteYaz();
+
+    const parse=JSON.stringify(bbasket)
+
+localStorage.setItem("Basket:",parse)
 }
 
 function sebeteYaz() {
     const meshullarelavesi = document.getElementById("meshullarelavesi");
      meshullarelavesi.innerHTML = "";
+
+     const parse = JSON.stringify(bbasket);
+    localStorage.setItem("basket", parse);
 
     bbasket.map(item => {
 
@@ -194,3 +201,8 @@ function hesabla(arg) {
 function getPage() {
     window.location.href = '../index.htm';
 }
+
+
+// const parse = JSON.stringify(bbasket)
+
+// localStorage.setItem("meshullarelavesi" , "")
